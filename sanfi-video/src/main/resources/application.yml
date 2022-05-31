@@ -1,0 +1,10 @@
+server:
+  port: 8085
+
+
+
+# log config
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: D:/sanfi-2107/log
