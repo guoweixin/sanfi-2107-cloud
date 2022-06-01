@@ -31,6 +31,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <lombok.version>1.18.20</lombok.version>
+    <!--SpringCloud版本号声明  -->
+    <spring.cloud-version>Hoxton.SR4</spring.cloud-version>
   </properties>
 
 <!--统一版本管理（jar包引入） -->
@@ -45,7 +47,15 @@
   </dependencies>
 <!-- 只是声明，子模块并不会引用 -->
   <dependencyManagement>
-
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring.cloud-version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
 
   </dependencyManagement>
 

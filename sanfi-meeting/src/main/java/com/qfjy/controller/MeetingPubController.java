@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @ClassName MeetingPubController
@@ -40,8 +41,19 @@ public class MeetingPubController {
 
         log.info("会议微服务--》根据会议编号，查询会议信息{}",pcode);
         if(meetingPub!=null){
+
+            //视频微服务（进程和进程间通信）HTTP方式（Spring RestTemplate)
+            String url="http://localhost:8085/videoInfo/video?pcode="+meetingPub.getPcode();
+            // URL请求发送的是GET，
+            String result=restTemplate.getForObject(url,String.class);
+            meetingPub.setRemark(result);
+
+
             return new ResultJson<>(meetingPub, ResultCode.SUCCESS);
         }
         return new ResultJson<>(null,ResultCode.NOT_DATA);
     }
+
+    @Autowired
+    private RestTemplate restTemplate;
 }
