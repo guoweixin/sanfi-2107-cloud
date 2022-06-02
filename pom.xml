@@ -20,6 +20,7 @@
   <modules>
     <module>sanfi-common</module>
     <module>sanfi-api</module>
+    <module>cloud</module>
   </modules>
 
   <name>sanfi</name>

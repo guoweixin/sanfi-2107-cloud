@@ -11,6 +11,9 @@ spring:
       password: root
   thymeleaf:
     cache: false
+  application:
+    name: sanfi-meeting
+
 
 #myBatis
 mybatis:
@@ -23,3 +26,11 @@ logging:
   config: classpath:logback-spring.xml
   file:
     path: D:/sanfi-2107/log
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9001/eureka/
+feign:
+  hystrix:
+    enabled: true
